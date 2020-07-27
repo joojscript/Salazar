@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const serverInstanceSchema = mongoose.Schema({
-  guild_id: Number,
+  guild_id: String,
   guild_name: String,
   configs: {
     prefix: String,

@@ -26,6 +26,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
   console.log('🧙‍♂️ Emerging from the shadows!');
+  database.clearRoutine(client);
 });
 
 client.on('message', async message => {

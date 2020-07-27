@@ -16,7 +16,7 @@ module.exports = {
   createServerInstance: async (client, message) => {
     if (!(client.guilds.cache.keyArray()[message.guild.id])) {
       const created = await ServerInstances.create({
-        guild_id: message.guild.id,
+        guild_id: message.guild.id.toString(),
         guild_name: message.guild.name,
         configs: { prefix: "$" }
       });
@@ -35,4 +35,15 @@ module.exports = {
     const result = await serverInstance.updateOne({ configs: newConfigsObject });
     console.log(result);
   },
+  clearRoutine: async (client) => {
+    const guildsIndex = client.guilds.cache.keyArray();
+    const databaseRecords = await ServerInstances.find();
+
+
+    databaseRecords.map(async record => {
+      if (!(guildsIndex.includes(record.guild_id))) {
+        await ServerInstances.deleteOne({ guild_id: record.guild_id });
+      }
+    });
+  }
 }
