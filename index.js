@@ -3,10 +3,14 @@ require('dotenv').config()
 
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix } = require('./config');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
+const database = require('./database');
+const ServerInstances = require('./database/models/server_instance');
+const { getGuildIds } = require('./database');
+const { guildOnly } = require('./commands/config');
 
 // Loading all the commands:
 
@@ -24,7 +28,17 @@ client.once('ready', () => {
   console.log('🧙‍♂️ Emerging from the shadows!');
 });
 
-client.on('message', message => {
+client.on('message', async message => {
+  // Gets the prefix that was set to that specific guild:
+
+  if (await database.getServerInstance(message)) {
+    const { configs } = await database.getServerInstance(message);
+    prefix = configs.prefix;
+  } else {
+    const { configs } = await database.createServerInstance(client, message);
+    prefix = configs.prefix;
+  }
+
   // Checking wheter the message starts with a prefix or the 
   // author is Salazar himself.
   if (!message.content.startsWith(prefix) || message.author.bot) return;
