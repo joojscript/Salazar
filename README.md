@@ -1,5 +1,5 @@
 <h1 align="center">
-  # SALAZAR
+  <h1>SALAZAR</h1>
   <img src="https://images.emojiterra.com/google/android-oreo/512px/1f9d9-2642.png" width="250" height="250"  />
 </h1>
 
