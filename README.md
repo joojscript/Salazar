@@ -1,6 +1,6 @@
 <h1 align="center">
   <h1 align="center">SALAZAR</h1>
-  <img src="https://images.emojiterra.com/google/android-oreo/512px/1f9d9-2642.png" width="250" height="250"  />
+  <img src="https://images.emojiterra.com/google/android-oreo/512px/1f9d9-2642.png" width="250" height="250" align="center"  />
 </h1>
 
 Salazar was an incredible mage that lived sometime in the past. Nobody knows exactly how, but he returned from the shadows to play your favorite music and roll the dices to you. 😉
