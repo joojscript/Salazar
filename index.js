@@ -1,6 +1,9 @@
 // Sets up environment variables.
 require('dotenv').config()
 
+// Load server maintener script:
+require('./server');
+
 const fs = require('fs');
 const Discord = require('discord.js');
 
