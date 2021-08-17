@@ -12,9 +12,9 @@ Salazar was an incredible mage that lived sometime in the past. Nobody knows exa
 
 ## 👨‍💻 Current Available Commands
 
-- **config set prefix** (Changes the current prefix used to call Salazar).
-- **roll** *NUMBER* (Run a dice with the given number of faces).
-- **play** *QUERY* or *URL* (Plays your favorite songs to you). 
+- **`config set prefix`** (Changes the current prefix used to call Salazar).
+- **`roll`** *NUMBER* (Run a dice with the given number of faces).
+- **`play`** *QUERY* or *URL* (Plays your favorite songs to you). 
 
 ## 🤖 How to add Salazar to your server?
 
