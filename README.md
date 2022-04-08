@@ -15,6 +15,7 @@ Salazar was an incredible mage that lived sometime in the past. Nobody knows exa
 - **`config set prefix`** (Changes the current prefix used to call Salazar).
 - **`roll`** *NUMBER* (Run a dice with the given number of faces).
 - **`play`** *QUERY* or *URL* (Plays your favorite songs to you). 
+- **`pomo`** *WORK TIME* or *BREAK TIME* (Run a [pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique) cycle for you). 
 
 ## 🤖 How to add Salazar to your server?
 
