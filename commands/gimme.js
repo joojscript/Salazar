@@ -1,5 +1,3 @@
-import http from "http";
-
 module.exports = {
   name: "gimme",
   description: "A handy command to get some things you want",
