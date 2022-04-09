@@ -26,7 +26,7 @@ module.exports = {
       message.channel.send(
         `https://avatars.dicebear.com/api/${selectedSprite}/${
           args[2] || Math.random()
-        }.svg`
+        }.png`
       );
     } else if (args[0] === "image") {
       const firstDimension = typeof args[1] === "number" ? args[1] : 500;
