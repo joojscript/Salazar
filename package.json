@@ -12,9 +12,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.7.0",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.6.0",
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.13.9",
     "yt-search": "^2.10.3",
