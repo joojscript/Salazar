@@ -16,7 +16,7 @@
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.9",
+    "mongoose": "^5.13.14",
     "yt-search": "^2.10.3",
     "ytdl-core": "^3.1.3"
   }
