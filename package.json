@@ -15,8 +15,8 @@
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.13.14",
+    "express": "^4.17.3",
+    "mongoose": "^5.13.9",
     "yt-search": "^2.10.3",
     "ytdl-core": "^3.1.3"
   }
