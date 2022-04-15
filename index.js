@@ -1,23 +1,22 @@
 // Sets up environment variables.
-require('dotenv').config()
+require("dotenv").config();
 
-// Load server maintener script:
-require('./server');
-
-const fs = require('fs');
-const Discord = require('discord.js');
+const fs = require("fs");
+const Discord = require("discord.js");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-const database = require('./database');
-const ServerInstances = require('./database/models/server_instance');
-const { getGuildIds } = require('./database');
-const { guildOnly } = require('./commands/config');
+const database = require("./database");
+const ServerInstances = require("./database/models/server_instance");
+const { getGuildIds } = require("./database");
+const { guildOnly } = require("./commands/config");
 
 // Loading all the commands:
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs
+  .readdirSync("./commands")
+  .filter((file) => file.endsWith(".js"));
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
 
@@ -26,13 +25,12 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-
-client.once('ready', () => {
-  console.log('🧙‍♂️ Emerging from the shadows!');
+client.once("ready", () => {
+  console.log("🧙‍♂️ Emerging from the shadows!");
   database.clearRoutine(client);
 });
 
-client.on('message', async message => {
+client.on("message", async (message) => {
   // Gets the prefix that was set to that specific guild:
 
   if (await database.getServerInstance(message)) {
@@ -43,7 +41,7 @@ client.on('message', async message => {
     prefix = configs.prefix;
   }
 
-  // Checking wheter the message starts with a prefix or the 
+  // Checking wheter the message starts with a prefix or the
   // author is Salazar himself.
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -57,8 +55,10 @@ client.on('message', async message => {
   if (!client.commands.has(commandName)) return;
   const command = client.commands.get(commandName);
 
-  if (command.guildOnly && message.channel.type !== 'text') {
-    return message.reply('This type of witchcraft isn\'t allowed outside a Guild!');
+  if (command.guildOnly && message.channel.type !== "text") {
+    return message.reply(
+      "This type of witchcraft isn't allowed outside a Guild!"
+    );
   }
 
   if (command.args && !args.length) {
@@ -75,7 +75,7 @@ client.on('message', async message => {
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply('I\'m not strong enough to do this kind of wizardry!');
+    message.reply("I'm not strong enough to do this kind of wizardry!");
   }
 });
 
