@@ -1,4 +1,3 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 const ServerInstances = require("./models/server_instance");
 
