@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const ServerInstances = require('./models/server_instance');
+require("dotenv").config();
+const mongoose = require("mongoose");
+const ServerInstances = require("./models/server_instance");
 
 const connection = mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -14,11 +15,11 @@ module.exports = {
     return client.guilds.cache.keyArray();
   },
   createServerInstance: async (client, message) => {
-    if (!(client.guilds.cache.keyArray()[message.guild.id])) {
+    if (!client.guilds.cache.keyArray()[message.guild.id]) {
       const created = await ServerInstances.create({
         guild_id: message.guild.id.toString(),
         guild_name: message.guild.name,
-        configs: { prefix: "$" }
+        configs: { prefix: "$" },
       });
       console.log(created);
       return created;
@@ -29,21 +30,24 @@ module.exports = {
     return found;
   },
   setConfigs: async (message, newConfigsObject) => {
-    console.log('started setting the prefix!');
-    const serverInstance = await ServerInstances.findOne({ guild_id: message.guild.id });
+    console.log("started setting the prefix!");
+    const serverInstance = await ServerInstances.findOne({
+      guild_id: message.guild.id,
+    });
     console.log(serverInstance);
-    const result = await serverInstance.updateOne({ configs: newConfigsObject });
+    const result = await serverInstance.updateOne({
+      configs: newConfigsObject,
+    });
     console.log(result);
   },
   clearRoutine: async (client) => {
     const guildsIndex = client.guilds.cache.keyArray();
     const databaseRecords = await ServerInstances.find();
 
-
-    databaseRecords.map(async record => {
-      if (!(guildsIndex.includes(record.guild_id))) {
+    databaseRecords.map(async (record) => {
+      if (!guildsIndex.includes(record.guild_id)) {
         await ServerInstances.deleteOne({ guild_id: record.guild_id });
       }
     });
-  }
-}
+  },
+};
