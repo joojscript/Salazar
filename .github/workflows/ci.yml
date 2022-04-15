@@ -26,11 +26,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Lint
-        run: yarn lint
-
       - name: Test
         run: yarn jest
-
-      - name: Build
-        run: yarn prepare
